@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员页面</title>
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+</head>
+<body>
+    <div class="login page-warp">
+        <div class='content'>
+            <div class="user-title">管理员登录</div>
+            <div class="user-box">
+                <div class="error-item hide">
+                    <div class="error-msg">Error</div>
+                </div>
+                <div class="user-item">
+                    <label for="userId" class="userlabel">账号:</label>
+                    <input id="userId" type="text" class="user-content" placeholder="请输入账号" autocomplete="off">
+                </div>
+                <div class="user-item">
+                    <label for="userId" class="userlabel">密码:</label>
+                    <input id="password" type="password" class="user-content" placeholder="请输入密码" autocomplete="off">
+                </div>
+                <div class="btn btn-submit" id="login_submit">登录</div>
+            </div>
+        </div>
+    </div>
+    <script src="./../HP_common/jquery/jquery.min.js"></script>
+    <script src="./../HP_common/_util/HP.js"></script>
+    <script src="./js/service/admin_service.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+</html>

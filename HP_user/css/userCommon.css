@@ -1,0 +1,54 @@
+/*
+* @Author: linshuling
+* @Date:   2018-04-27 11:25:01
+* @Last Modified by:   linshuling
+* @Last Modified time: 2018-05-03 11:05:07
+*/
+body{
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+header{
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    z-index:2;
+    line-height: 50px;
+    background-color:#00D3C2;
+    background: linear-gradient(to right, #1db5a4, #1cabbf);
+    color: #fff;
+}
+header .header_content{
+    overflow: hidden;
+}
+header .header_content .searchInput{
+    float: right;
+}
+header .logoText{
+    font-size: 20px;
+    font-weight: bold;
+}
+.text{
+    height: 18px;
+    line-height: 18px;
+    margin-top: 10px;
+}
+.header_content .searchInput input{
+   display: inline-block;
+   width: 160px;
+}
+.panel-info>.panel-heading {
+    background: #caefeb;
+}
+.panel-body .reserveBtn{
+    float: right;
+}
+.panel-body .reserveBtn a{
+    color: #fff;
+}
+.container_m{
+    padding-top:50px;
+}

@@ -1,0 +1,77 @@
+/*
+* @Author: linshuling
+* @Date:   2018-04-24 16:01:10
+* @Last Modified by:   linshuling
+* @Last Modified time: 2018-05-02 15:42:22
+*/
+body{
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+header{
+    height: 50px;
+    line-height: 50px;
+    background-color:#f8f8f8;
+    border: 1px solid #e7e7e7;
+    overflow: hidden;
+}
+textarea{
+    resize: none;
+}
+.hide{
+    display: none;
+}
+.logoText{
+    font-size:20px;
+    padding: 18px;
+}
+.loginMsg{
+    float: right;
+    padding-right: 40px;
+}
+.content_left{
+    width: 14%;
+    height: 600px;
+    float: left;
+    background-color:#f8f8f8;
+}
+.content_right{
+    width: 80%;
+    float: left;
+    padding: 18px;
+}
+.pane_header{
+    width: 100%;
+    overflow: hidden;
+    border-bottom:1px solid #ccc;
+}
+.pane_header .pane_title{
+    display: inline-block;
+    color:#666;
+    font-size: 28px;
+    padding: 10px;
+}
+.pane_header .btn{
+    float: right;
+    margin-top:18px;
+}
+.pane_header .btn span{
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    padding-right: 8px;
+}
+.tab-pane .pane_search .searchInput{
+    display: inline-block;
+    width: 200px;
+    margin-right: 6px;
+}
+.btn-xs{
+    margin:4px;
+}
+.b_color{
+    color:#337ab7;
+}

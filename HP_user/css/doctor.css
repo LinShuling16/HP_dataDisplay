@@ -1,0 +1,13 @@
+/*
+* @Author: linshuling
+* @Date:   2018-04-27 11:28:04
+* @Last Modified by:   linshuling
+* @Last Modified time: 2018-05-03 15:48:16
+*/
+.header_content{
+    text-align: center;
+}
+.panel-body{
+    height:160px; 
+    overflow:auto;
+}

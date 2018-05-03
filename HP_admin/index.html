@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>HP_admin_index</title>
+    <!-- 公共资源 jq-V1.9.1 bs-V3.3.7-->
+    <link rel="stylesheet" href="./../HP_common/bootstrap/css/bootstrap.min.css">
+    <!-- ** -->
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <header>
+        <a href="javascript:;" class="logoText">健康平台管理</a>
+        <!-- <p class="loginMsg">欢迎,<span id="adminName">张三</span><a href="JavaScript:;" id="logout">退出</a></p> -->
+    </header>
+    <div class="content">
+        <!-- tab选项 -->
+        <div class="content_left">
+            <ul class="nav nav-tabs nav-stacked" id="Tabs">
+              <li class="active"><a href="#hospitalAd">医院管理</a></li>
+              <li><a href="#deptAd">科室管理</a></li>
+              <li><a href="#doctorAd">医生管理</a></li>
+            </ul>
+        </div>
+        <!-- tab内容 -->
+        <div class="content_right">
+            <div class="tab-content">
+                <!-- 医院管理 -->
+                <div role="tabpanel" class="tab-pane active" id="hospitalAd">
+                    <p class="pane_header">
+                        <span class="pane_title">医院管理</span>
+                        <button type="button" class="btn btn-primary addHospitalBtn" data-toggle="modal" data-target="#hospitalModal"><span>+</span>添加医院</button>
+                    </p>
+                    <div class="pane_search">
+                        <input type="text" class="form-control searchInput" id="searchHospitalInput" placeholder="请输入医院名称">
+                        <button type="button" class="btn btn-default searchHospitalBtn">查询</button>
+                    </div>
+
+                    <table class="table table-bordered table_hospital">
+                        <caption>医院基本信息</caption>
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>等级</th>
+                                <th>地址</th>
+                                <th>官网</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <!-- 科室管理 -->
+                <div role="tabpanel" class="tab-pane" id="deptAd">
+                    <p class="pane_header">
+                        <span class="pane_title">科室管理</span>
+                        <button type="button" class="btn btn-primary addDeptBtn hide" data-toggle="modal" data-target="#deptModal"><span>+</span>添加科室</button>
+                    </p>
+                    <div class="pane_search">
+                        <!-- 面包屑导航 -->
+                        <ol class="breadcrumb">
+                          <li class="b_color">科室管理</li>
+                          <li class="active b_hospital">请选择医院</li>
+                        </ol>
+                       <select class="form-control searchInput selectHospital dept_selectHospital"></select>
+                    </div>
+                    <table class="table table-bordered table_dept">
+                        <caption>科室基本信息</caption>
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>简介</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <!-- 医生管理 -->
+                <div role="tabpanel" class="tab-pane" id="doctorAd">
+                    <p class="pane_header">
+                        <span class="pane_title">医生管理</span>
+                        <button type="button" class="btn btn-primary addDoctorBtn hide" data-toggle="modal" data-target="#doctorModal"><span>+</span>添加医生</button>
+                    </p>
+                     <div class="pane_search">
+                      <!-- 面包屑导航 -->
+                        <ol class="breadcrumb">
+                          <li class="b_color">医生管理</li>
+                          <li class="b_color b_hospital">请选择医院</li>
+                          <li class="active b_dept">请选择科室</li>
+                        </ol>
+                       <select class="form-control searchInput selectHospital doctor_selectHospital"></select>
+                       <select class="form-control searchInput selectDept">
+                           <option value="">请先选择医院</option>
+                       </select>
+                    </div>
+                    <table class="table table-bordered table_doctor">
+                        <caption>医生基本信息</caption>
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>职位</th>
+                                <th>联系方式</th>
+                                <th>专长</th>
+                                <th>个人简介</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态框（Modal） 添加医院/查看/编辑医院信息-->
+    <div class="modal fade" id="hospitalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">
+                        请填写相关信息
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                        <input type="text" class="hide" id="m_hospitalId">
+                        <label for="m_hospitalName" class="col-sm-2 control-label">医院名称</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_hospitalName" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_hospitalGrade" class="col-sm-2 control-label">医院等级</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_hospitalGrade" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_hospitalAddress" class="col-sm-2 control-label">医院地址</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_hospitalAddress" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_hospitalUrl" class="col-sm-2 control-label">医院网址</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_hospitalUrl" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_hospitalSTel" class="col-sm-2 control-label">服务电话</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_hospitalSTel" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_hospitalETel" class="col-sm-2 control-label">急救电话</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_hospitalETel" class="form-control"  placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_hospital" class="col-sm-2 control-label">医院简介</label>
+                        <div class="col-sm-10">
+                          <textarea type="text" id="m_hospital" class="form-control" placeholder="请填写">
+                         </textarea>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary submitAddHospital">
+                        添加
+                    </button>
+                    <button type="button" class="btn btn-primary submitUpdataHospital">
+                        修改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    
+    <!-- 模态框（Modal） 添加科室/查看/编辑科室信息-->
+    <div class="modal fade" id="deptModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">
+                        请填写相关信息
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                        <input type="text" class="hide" id="m_deptId">
+                        <label for="m_deptName" class="col-sm-2 control-label">科室名称</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_deptName" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_dept" class="col-sm-2 control-label">科室简介</label>
+                        <div class="col-sm-10">
+                          <textarea type="text" id="m_dept" class="form-control" placeholder="请填写">
+                         </textarea>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary submitAddDept">
+                        添加
+                    </button>
+                     <button type="button" class="btn btn-primary submitUpdataDept">
+                        修改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 模态框（Modal）添加医生/查看/编辑医生信息-->
+    <div class="modal fade" id="doctorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">
+                        请填写相关信息
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                        <input type="text" class="hide" id="m_doctorId">
+                        <label for="m_doctorName" class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_doctorName" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_doctorJob" class="col-sm-2 control-label">职位</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_doctorJob" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_doctorTel" class="col-sm-2 control-label">联系方式</label>
+                        <div class="col-sm-10">
+                          <input type="text" id="m_doctorTel" class="form-control" placeholder="请填写">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_doctorSpecialt" class="col-sm-2 control-label">专长</label>
+                        <div class="col-sm-10">
+                          <textarea type="text" id="m_doctorSpecialt" class="form-control" placeholder="请填写">
+                         </textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="m_doctor" class="col-sm-2 control-label">个人简介</label>
+                        <div class="col-sm-10">
+                          <textarea type="text" id="m_doctor" class="form-control" placeholder="请填写">
+                         </textarea>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary submitAddDoctor">
+                        添加
+                    </button>
+                     <button type="button" class="btn btn-primary submitUpdataDoctor">
+                        修改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+   
+    <!-- 公共资源 -->
+    <script src="./../HP_common/jquery/jquery.min.js"></script>
+    <script src="./../HP_common/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./../HP_common/_util/HP.js"></script>
+    <script src="./js/service/admin_service.js"></script>
+   <!-- ** -->
+    <script src="./js/index.js"></script>
+</body>
+</html>
